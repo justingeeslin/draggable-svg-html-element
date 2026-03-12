@@ -1,11 +1,48 @@
 class DraggableSvgBoard extends HTMLElement {
   constructor() {
 	super();
+	
+	this.attachShadow({ mode: "open" });
+	
+	this.shadowRoot.innerHTML = `
+	  <style>
+		:host {
+		  display: block;
+		}
+	
+		.wrap {
+		  width: 100%;
+		}
+	
+		svg {
+		  width: 100%;
+		  height: auto;
+		  display: block;
+		  touch-action: none;
+		  user-select: none;
+		}
+	
+		[data-draggable="true"] {
+		  cursor: grab;
+		}
+	
+		[data-draggable="true"].dragging {
+		  cursor: grabbing;
+		}
+	  </style>
+	
+	  <div class="wrap">
+		<slot></slot>
+	  </div>
+	`;
+	
 	this._drag = null;
 
 	this._onPointerDown = this._onPointerDown.bind(this);
 	this._onPointerMove = this._onPointerMove.bind(this);
 	this._onPointerUp = this._onPointerUp.bind(this);
+	
+	
   }
 
   connectedCallback() {
