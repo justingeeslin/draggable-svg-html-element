@@ -25,6 +25,11 @@ class DraggableSvgBoard extends HTMLElement {
 		[data-draggable="true"] {
 		  cursor: grab;
 		}
+		
+		[data-draggable="true"] * {
+		  pointer-events: all;
+		  fill: transparent;
+		}
 	
 		[data-draggable="true"].dragging {
 		  cursor: grabbing;
