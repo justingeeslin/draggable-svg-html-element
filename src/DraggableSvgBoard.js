@@ -1,4 +1,4 @@
-class DraggableSvgBoard extends HTMLElement {
+export default class DraggableSvgBoard extends HTMLElement {
   constructor() {
 	super();
 	
